@@ -1,3 +1,4 @@
+#![feature(associated_consts)] 
 extern crate rocket;
 
 pub mod authenticator;
