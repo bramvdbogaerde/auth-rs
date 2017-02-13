@@ -1,0 +1,7 @@
+[package]
+name = "auth"
+version = "0.1.0"
+authors = ["Bram Vandenbogaerde <bram.vandenbogaerde@gmail.com>"]
+
+[dependencies]
+rocket = "0.1.5"
