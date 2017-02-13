@@ -1,6 +1,8 @@
 Auth-rs
 =============
 
+[![](https://img.shields.io/badge/crates.io-v0.1.0-red.svg)](https://crates.io/crates/rocket-simpleauth)
+
 This library provides a simple username/password authentication system to use with Rocket.
 At the moment the library is not yet published at crates.io, but can be used via this Git repository.
 
@@ -13,6 +15,12 @@ SimpleCookie just stores the cookie in plain text without any encoding or encryp
 This is just an example, please implement your own Authenticator to correctly verify user credentials.
 
 SimpleCookie isn't recommended either because it makes it very easy for an attacker to spoof cookies.
+
+Cargo.toml
+```
+[dependencies]
+rocket-simpleauth="0.1.0"
+```
 
 ```
 extern crate auth;

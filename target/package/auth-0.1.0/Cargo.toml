@@ -1,0 +1,15 @@
+[package]
+name = "auth"
+version = "0.1.0"
+authors = ["Bram Vandenbogaerde"]
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]
+description="Simple username/password authentication system for Rocket"
+license="LGPL"
+homepage="https://github.com/bramvdbogaerde/auth-rs"
+repository="https://github.com/bramvdbogaerde/auth-rs"
+
+[dependencies]
+rocket = "0.1.5"
