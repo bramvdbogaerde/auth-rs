@@ -44,7 +44,7 @@ fn login() -> &'static str{
 }
 
 #[post("/admin", data = "<form>")]
-fn login_post(form: LoginStatus<DummyAuthenticator, SimpleCookie>) LoginRedirect{
+fn login_post(form: Form<LoginStatus<DummyAuthenticator, SimpleCookie>>) -> LoginRedirect{
 	// creates a response with either a cookie set (in case of a succesfull login)
 	// or not (in case of a failure). In both cases a "Location" header is send.
 	// the first parameter indicates the redirect URL when successful login,
