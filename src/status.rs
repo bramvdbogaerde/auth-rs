@@ -57,8 +57,7 @@ impl<A: Authenticator,C: ToCookie> LoginStatus<A,C>{
 impl<'f,A: Authenticator,C> FromForm<'f> for LoginStatus<A,C>{
     type Error = &'static str;
     
-    fn from_form_string(form_string: &'f str) -> Result<Self, Self::Error>{
-        let mut form_items = FormItems::<'f>(form_string);
+    fn from_form_items(form_items: &mut FormItems<'f>) -> Result<Self, Self::Error> {
         let mut user_pass = HashMap::new();
 
         for (key,value) in form_items{
