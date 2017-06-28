@@ -1,0 +1,9 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["Bram Vandenbogaerde <bram.vandenbogaerde@gmail.com>"]
+
+[dependencies]
+rocket = "0.2.6"
+rocket-simpleauth = {path = "../"}
+rocket_codegen = "0.2.6"
