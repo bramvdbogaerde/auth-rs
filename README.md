@@ -16,7 +16,7 @@ This is just an example, please implement your own Authenticator to correctly ve
 
 SimpleCookie isn't recommended either because it makes it very easy for an attacker to spoof cookies.
 
-A full example can be found in [example/][example/] directory
+A full example can be found in [example/](example/) directory
 
 ## Todo
 
