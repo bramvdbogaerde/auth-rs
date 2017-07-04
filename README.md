@@ -17,7 +17,7 @@ This is just an example, please implement your own Authenticator to correctly ve
 SimpleCookie isn't recommended either because it makes it very easy for an attacker to spoof cookies.
 
 Cargo.toml
-```
+```toml
 [dependencies]
 rocket = "0.2.6"
 rocket-simpleauth = {path = "../"}
@@ -25,7 +25,7 @@ rocket_codegen = "0.2.6"
 ```
 
 main.rs
-```
+```rust
 #![feature(plugin)]
 #![plugin(rocket_codegen)]
 
