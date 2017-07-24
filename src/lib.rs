@@ -1,8 +1,6 @@
-#![feature(associated_consts)] 
 extern crate rocket;
 
 pub mod authenticator;
-pub mod cookie;
 
 pub mod status;
 pub mod userpass;

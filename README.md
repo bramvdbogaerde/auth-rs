@@ -6,22 +6,22 @@ Auth-rs
 This library provides a simple username/password authentication system to use with Rocket.
 At the moment the library is not yet published at crates.io, but can be used via this Git repository.
 
+For Cookie encryption, the library uses the Private Cookie feature of Rocket. For maintaining cookie validity after a restart,
+do not forget to set the `secret_key` configuration parameter, otherwise Rocket will generate a new key at every execution.
+
 ## Example
 
 In this example we are using the builtin `DummyAuthenticator` which lets all username/password combinations through.
 As the cookie content a simple "Hello World" string is used.
 
-SimpleCookie just stores the cookie in plain text without any encoding or encryption.
 This is just an example, please implement your own Authenticator to correctly verify user credentials.
-
-SimpleCookie isn't recommended either because it makes it very easy for an attacker to spoof cookies.
 
 Cargo.toml
 ```toml
 [dependencies]
-rocket = "0.2.6"
+rocket = "0.3.0"
 rocket-simpleauth = {path = "../"}
-rocket_codegen = "0.2.6"
+rocket_codegen = "0.3.0"
 ```
 
 main.rs
@@ -34,11 +34,12 @@ extern crate rocket;
 
 use auth::userpass::UserPass;
 use rocket::request::Form;
+use rocket::http::Cookies;
 use auth::status::{LoginStatus,LoginRedirect};
-use auth::dummy::{DummyAuthenticator,SimpleCookie};
+use auth::dummy::DummyAuthenticator;
 
 #[get("/admin")]
-fn admin(user: UserPass<DummyAuthenticator, SimpleCookie>) -> &'static str{
+fn admin(user: UserPass<DummyAuthenticator>) -> &'static str{
 	// we use request guards to fall down to the login page if UserPass couldn't find a valid cookie
 	"Restricted administration area"
 }
@@ -49,12 +50,12 @@ fn login() -> &'static str{
 }
 
 #[post("/admin", data = "<form>")]
-fn login_post(form: Form<LoginStatus<DummyAuthenticator, SimpleCookie>>) -> LoginRedirect{
+fn login_post(form: Form<LoginStatus<DummyAuthenticator>>, cookies: Cookies) -> LoginRedirect{
 	// creates a response with either a cookie set (in case of a succesfull login)
 	// or not (in case of a failure). In both cases a "Location" header is send.
 	// the first parameter indicates the redirect URL when successful login,
 	// the second a URL for a failed login
-	form.into_inner().redirect("/admin", "/admin")
+	form.into_inner().redirect("/admin", "/admin", cookies)
 }
 
 fn main(){

@@ -3,8 +3,6 @@ use std;
 pub trait Authenticator{
     /// the identifier used to denote the session cookie
     const COOKIE_IDENTIFIER : &'static str;
-    /// secret used to encrypt and validate the cookie
-    const SECRET : &'static str;
 
     /// a function that returns a user_id in the form a String
     fn user_id(&self) -> String;

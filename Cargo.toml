@@ -12,4 +12,4 @@ homepage="https://github.com/bramvdbogaerde/auth-rs"
 repository="https://github.com/bramvdbogaerde/auth-rs"
 
 [dependencies]
-rocket = "0.2.6"
+rocket = "0.3.0"
