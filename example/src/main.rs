@@ -11,9 +11,9 @@ use auth::status::{LoginStatus,LoginRedirect};
 use auth::dummy::DummyAuthenticator;
 
 #[get("/admin")]
-fn admin(user: UserPass<DummyAuthenticator>) -> &'static str{
+fn admin(user: UserPass<DummyAuthenticator>) -> String{
 	// we use request guards to fall down to the login page if UserPass couldn't find a valid cookie
-	"Restricted administration area"
+	format!("Restricted administration area, user logged in with ID: {}", user.user_id)
 }
 
 #[get("/admin")]

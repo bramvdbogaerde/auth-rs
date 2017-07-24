@@ -7,7 +7,7 @@ use rocket::Request;
 use rocket::outcome::Outcome;
 
 pub struct UserPass<A>{
-    user_id: String,
+    pub user_id: String,
     authenticator: PhantomData<A>
 }
 
