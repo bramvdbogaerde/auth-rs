@@ -69,10 +69,16 @@ A full example can be found in [example/](example/) directory
 
 The following items are in development or are planned to be developped:
 
-* [ ] stateless cookie validation using JSON Web Tokens
 * [ ] standard implementation for user storage into sqlite databases
 * [x] publishing to crates.io
-* [ ] cookie storage in Redis datastore
 * [ ] API stability
 * [ ] Documentation
+
+### On hold
+
+See [this issue](issues/4)
+
+* [ ] cookie storage in Redis datastore
+* [ ] stateless cookie validation using JSON Web Tokens
+
 
