@@ -20,7 +20,7 @@ Cargo.toml
 ```toml
 [dependencies]
 rocket = "0.3.0"
-rocket-simpleauth = {path = "../"}
+rocket-simpleauth = "0.2.0"
 rocket_codegen = "0.3.0"
 ```
 
