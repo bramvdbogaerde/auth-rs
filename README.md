@@ -76,7 +76,7 @@ The following items are in development or are planned to be developped:
 
 ### On hold
 
-See [this issue](issues/4)
+See [this issue](https://github.com/bramvdbogaerde/auth-rs/issues/4)
 
 * [ ] cookie storage in Redis datastore
 * [ ] stateless cookie validation using JSON Web Tokens
