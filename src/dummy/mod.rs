@@ -3,8 +3,6 @@ use super::authenticator::Authenticator;
 pub struct DummyAuthenticator{}
 
 impl Authenticator for DummyAuthenticator{
-    const COOKIE_IDENTIFIER : &'static str = "dummy.sessionid";
-
     fn user_id(&self) -> String{
         "hello world".to_string()
     }   

@@ -16,6 +16,7 @@ fn admin(user: UserPass<DummyAuthenticator>) -> String{
 	format!("Restricted administration area, user logged in with ID: {}", user.user_id)
 }
 
+
 #[get("/admin")]
 fn login() -> &'static str{
 	"Login page"

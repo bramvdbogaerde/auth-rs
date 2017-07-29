@@ -1,3 +1,4 @@
+use super::config;
 use rocket::Response;
 use rocket::response::Redirect;
 use rocket::response::Responder;
@@ -6,9 +7,22 @@ use rocket::http::{Status, Cookie, Cookies};
 use std::collections::HashMap;
 use super::authenticator::Authenticator;
 
+
 /// Login state is used after the user has typed its username and password. It checks with an
-/// authenticator if given credentials are valid and returns InvalidCredentials and Succeed based
+/// authenticator if given credentials are valid and returns InvalidCredentials or Succeed based
 /// on the validality of the username and password.
+///
+/// It does that by implementing the FromForm trait that takes the form submitted by your login
+/// page
+///
+/// It expects a form like this on your page:
+///
+///```
+///<form>
+/// <input type="text" name="username" />
+/// <input type="password" name="password" />
+///</form>
+/// ```
 pub enum LoginStatus<A>{
     Succeed(A),
     Failed(A)
@@ -27,7 +41,9 @@ impl<A: Authenticator> LoginStatus<A> {
 
     /// Generates a succeed response
     fn succeed(self, url: &'static str, mut cookies: Cookies) -> Redirect {
-        cookies.add_private(Cookie::new(A::COOKIE_IDENTIFIER, self.get_authenticator().user_id()));
+        let cookie_identifier = config::get_cookie_identifier();
+
+        cookies.add_private(Cookie::new(cookie_identifier, self.get_authenticator().user_id()));
         Redirect::to(url)
     }
 

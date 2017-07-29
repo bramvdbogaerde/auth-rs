@@ -7,4 +7,5 @@ pub mod userpass;
 
 /// Example implementation of Authenticator and FromCookie and ToCookie
 pub mod dummy;
+mod config;
 
