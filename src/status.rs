@@ -43,7 +43,7 @@ impl<A: Authenticator> LoginStatus<A> {
     fn succeed(self, url: &'static str, mut cookies: Cookies) -> Redirect {
         let cookie_identifier = config::get_cookie_identifier();
 
-        cookies.add_private(Cookie::new(cookie_identifier, self.get_authenticator().user_id()));
+        cookies.add_private(Cookie::new(cookie_identifier, self.get_authenticator().user().to_string()));
         Redirect::to(url)
     }
 

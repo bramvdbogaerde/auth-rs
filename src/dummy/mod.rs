@@ -3,7 +3,9 @@ use super::authenticator::Authenticator;
 pub struct DummyAuthenticator{}
 
 impl Authenticator for DummyAuthenticator{
-    fn user_id(&self) -> String{
+    type User = String;
+
+    fn user(&self) -> String{
         "hello world".to_string()
     }   
 
