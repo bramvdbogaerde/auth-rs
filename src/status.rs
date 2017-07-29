@@ -69,7 +69,6 @@ impl<'f,A: Authenticator> FromForm<'f> for LoginStatus<A>{
         let mut user_pass = HashMap::new();
 
         for (key,value) in form_items{
-            println!("{} - {}", key,value);
             match key.as_str(){
                 "username" => user_pass.insert("username", value).map_or((), |_v| ()),
                 "password" => user_pass.insert("password", value).map_or((), |_v| ()),
