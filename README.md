@@ -1,7 +1,7 @@
 Auth-rs
 =============
 
-[![](https://img.shields.io/badge/crates.io-v0.2.0-red.svg)](https://crates.io/crates/rocket-simpleauth)
+[![](https://img.shields.io/badge/crates.io-v0.3.0-red.svg)](https://crates.io/crates/rocket-simpleauth)
 
 This library provides a simple username/password authentication system to use with Rocket.
 At the moment the library is not yet published at crates.io, but can be used via this Git repository.
@@ -13,7 +13,7 @@ Cargo.toml
 ```toml
 [dependencies]
 rocket = "0.3.0"
-rocket-simpleauth = "0.2.0"
+rocket-simpleauth = "0.3.0"
 rocket_codegen = "0.3.0"
 ```
 
