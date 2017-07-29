@@ -14,7 +14,7 @@ use auth::dummy::DummyAuthenticator;
 #[get("/admin")]
 fn admin(info: UserPass<String>) -> String{
 	// we use request guards to fall down to the login page if UserPass couldn't find a valid cookie
-	format!("Restricted administration area, user logged in with ID: {}", info.user)
+	format!("Restricted administration area, user logged in: {}", info.user)
 }
 
 
