@@ -9,6 +9,12 @@ pub trait FromString{
     fn from_string(s: String) -> Self;
 }
 
+impl FromString for String{
+    fn from_string(s: String) -> String{
+        s
+    }
+}
+
 pub struct UserPass<T>{
     pub user: T,
 }
