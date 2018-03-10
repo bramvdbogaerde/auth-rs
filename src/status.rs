@@ -40,19 +40,20 @@ impl<A: Authenticator> LoginStatus<A> {
     }
 
     /// Generates a succeed response
-    fn succeed(self, url: &'static str, mut cookies: Cookies) -> Redirect {
+    fn succeed<T: Into<String>>(self, url: T, mut cookies: Cookies) -> Redirect {
         let cookie_identifier = config::get_cookie_identifier();
 
         cookies.add_private(Cookie::new(cookie_identifier, self.get_authenticator().user().to_string()));
-        Redirect::to(url)
+        Redirect::to(url.into().as_str())
     }
 
     /// Generates a failed response
-    fn failed(self, url: &'static str) -> Redirect {
-        Redirect::to(url)
+    fn failed<T: Into<String>>(self, url: T) -> Redirect {
+        Redirect::to(url.into().as_str())
     }
 
-    pub fn redirect(self, success_url: &'static str, failure_url: &'static str, cookies: Cookies) -> LoginRedirect{
+    /// Generate an appropriate response based on the login status that the authenticator returned
+    pub fn redirect<T: Into<String>, S: Into<String>>(self, success_url: T, failure_url: S, cookies: Cookies) -> LoginRedirect{
         let redirect = match self {
           LoginStatus::Succeed(_) => self.succeed(success_url, cookies),
           LoginStatus::Failed(_) => self.failed(failure_url)
