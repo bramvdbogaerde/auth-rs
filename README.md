@@ -1,10 +1,9 @@
 Auth-rs
 =============
 
-[![](https://img.shields.io/badge/crates.io-v0.3.0-red.svg)](https://crates.io/crates/rocket-simpleauth)
+[![](https://img.shields.io/badge/crates.io-v0.4.0-red.svg)](https://crates.io/crates/rocket-simpleauth)
 
 This library provides a simple username/password authentication system to use with Rocket.
-At the moment the library is not yet published at crates.io, but can be used via this Git repository.
 
 For Cookie encryption, the library uses the Private Cookie feature of Rocket. For maintaining cookie validity after a restart,
 do not forget to set the `secret_key` configuration parameter, otherwise Rocket will generate a new key at every execution.
@@ -13,7 +12,7 @@ Cargo.toml
 ```toml
 [dependencies]
 rocket = "0.3.0"
-rocket-simpleauth = "0.3.0"
+rocket-simpleauth = "0.4.0"
 rocket_codegen = "0.3.0"
 ```
 
