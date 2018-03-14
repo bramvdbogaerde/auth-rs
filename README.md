@@ -20,13 +20,19 @@ rocket_codegen = "0.3.0"
 
 Please check [example/](example/) directory, for a full example. 
 
+## API Stability
+
+Apart from a few functions of some traits, the API should stay the same from now on (v0.4.0).
+Given issue #6 it is probabel that the `Authenticator` trait will change.
+
+When this crate reaches 1.0.0, the full API will be considered stable and frozen.
+
 ## Todo
 
 The following items are in development or are planned to be developped:
 
 * [ ] standard implementation for user storage into sqlite databases
 * [x] publishing to crates.io
-* [ ] API stability
 * [ ] Documentation
 
 ### On hold
