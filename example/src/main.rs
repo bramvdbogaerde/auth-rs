@@ -22,8 +22,8 @@ fn admin(info: UserPass<String>) -> String{
 fn login() -> Html<&'static str>{
     Html(
     "<form action=\"/admin\" method=\"POST\"> 
-        <input type=\"hidden\" name=\"username\" />
-        <input type=\"hidden\" name=\"password\" />
+        <input type=\"text\" name=\"username\" />
+        <input type=\"password\" name=\"password\" />
         <input type=\"submit\" value=\"Login\" />
     </form>"
     )

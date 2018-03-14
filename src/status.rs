@@ -71,8 +71,8 @@ impl<'f,A: Authenticator> FromForm<'f> for LoginStatus<A>{
 
         for (key,value) in form_items{
             match key.as_str(){
-                "username" => user_pass.insert("username", value).map_or((), |_v| ()),
-                "password" => user_pass.insert("password", value).map_or((), |_v| ()),
+                "username" => user_pass.insert("username", value.url_decode().unwrap()).map_or((), |_v| ()),
+                "password" => user_pass.insert("password", value.url_decode().unwrap()).map_or((), |_v| ()),
                 _ => ()
             }
         }
