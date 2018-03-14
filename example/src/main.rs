@@ -31,9 +31,8 @@ fn login() -> Html<&'static str>{
 }
 
 #[get("/logout",)]
-fn logout(info: UserPass<String>) -> Redirect {
-    let mut i = info;
-    i.logout();
+fn logout(mut info: UserPass<String>) -> Redirect {
+    info.logout();
     Redirect::to("/admin")
 }
 
