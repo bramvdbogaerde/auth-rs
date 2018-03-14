@@ -6,15 +6,16 @@ extern crate rocket;
 
 use auth::userpass::UserPass;
 use rocket::request::Form;
+use rocket::response::Redirect;
 use rocket::response::content::Html;
 use rocket::http::Cookies;
 use auth::status::{LoginStatus,LoginRedirect};
 use auth::dummy::DummyAuthenticator;
 
 #[get("/admin")]
-fn admin(info: UserPass<String>) -> String{
+fn admin(info: UserPass<String>) -> Html<String> {
 	// we use request guards to fall down to the login page if UserPass couldn't find a valid cookie
-	format!("Restricted administration area, user logged in: {}", info.user)
+	Html(format!("Restricted administration area, user logged in: {}, <a href=\"/logout\" >Logout</a> ", info.user))
 }
 
 
@@ -29,6 +30,13 @@ fn login() -> Html<&'static str>{
     )
 }
 
+#[get("/logout",)]
+fn logout(info: UserPass<String>) -> Redirect {
+    let mut i = info;
+    i.logout();
+    Redirect::to("/admin")
+}
+
 #[post("/admin", data = "<form>")]
 fn login_post(form: Form<LoginStatus<DummyAuthenticator>>, cookies: Cookies) -> LoginRedirect{
 	// creates a response with either a cookie set (in case of a succesfull login)
@@ -40,5 +48,5 @@ fn login_post(form: Form<LoginStatus<DummyAuthenticator>>, cookies: Cookies) -> 
 
 fn main(){
     // main setup code
-    rocket::ignite().mount("/", routes![admin,login, login_post]).launch();
+    rocket::ignite().mount("/", routes![admin,login, login_post, logout]).launch();
 }
